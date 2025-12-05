@@ -1,3 +1,7 @@
 .bg-home {
     background: url('/assets/images/charity/bg.jpg')
 }
+
+.bg-about-us {
+    background: url('/assets/images/company/aboutus.jpg');
+}
