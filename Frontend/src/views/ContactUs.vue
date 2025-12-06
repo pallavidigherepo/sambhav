@@ -1,39 +1,13 @@
 <script setup lang="ts">
+import PageTitle from '../components/PageTitle.vue';
 
 </script>
 <template>
     <!-- Start Hero -->
-    <section class="relative table w-full py-36 bg-about-us bg-center bg-no-repeat bg-cover">
-        <div class="absolute inset-0 bg-slate-900 opacity-75"></div>
-        <div class="container relative">
-            <div class="grid grid-cols-1 pb-8 text-center mt-10">
-                <h3 class="md:text-4xl text-3xl md:leading-normal tracking-wide leading-normal font-medium text-white">
-                    Contact Us</h3>
-            </div><!--end grid-->
-        </div><!--end container-->
-
-        <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
-            <ul class="tracking-[0.5px] mb-0 inline-block">
-                <li
-                    class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white">
-                    <a href="/" title="ApaarSambhavana">Home</a>
-                </li>
-                <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i
-                        class="uil uil-angle-right-b"></i></li>
-                <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white"
-                    aria-current="page">Contact Us</li>
-            </ul>
-        </div>
-    </section><!--end section-->
-    <div class="relative">
-        <div
-            class="shape absolute sm:-bottom-px -bottom-[2px] start-0 end-0 overflow-hidden z-1 text-white dark:text-slate-900">
-            <svg class="w-full h-auto scale-[2.0] origin-top" viewBox="0 0 2880 48" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
-            </svg>
-        </div>
-    </div>
+    <PageTitle heading="Contact Us" tagline="Boosting Ambitions. Transforming Futures." :breadcrumb-links="[
+        { label: 'Home', href: '/' },
+        { label: 'Contact Us', disabled: true }
+    ]" />
     <!-- End Hero -->
 
     <!-- Start Section-->
@@ -52,9 +26,9 @@
                             be happy to answer your questions.</p>
 
                         <div class="mt-5">
-                            <a href="tel:+152534-468-854"
-                                class="relative inline-block font-semibold tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:duration-500 text-primary hover:text-primary after:bg-primary duration-500 ease-in-out"><a
-                                    href="tel:+919595012654">+91 95950 12654</a></a>
+                            <a href="tel:+919595012654"
+                                class="relative inline-block font-semibold tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:duration-500 text-primary hover:text-primary after:bg-primary duration-500 ease-in-out">
+                                +91 95950 12654</a>
                         </div>
                     </div>
                 </div>
@@ -176,13 +150,5 @@
     </section><!--end section-->
     <!-- End Section-->
 
-    <div class="container-fluid relative">
-        <div class="grid grid-cols-1">
-            <div class="w-full leading-[0] border-0">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39206.002432144705!2d-95.4973981212445!3d29.709510002925988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c16de81f3ca5%3A0xf43e0b60ae539ac9!2sGerald+D.+Hines+Waterwall+Park!5e0!3m2!1sen!2sin!4v1566305861440!5m2!1sen!2sin"
-                    style="border:0" class="w-full h-[500px]" allowfullscreen></iframe>
-            </div>
-        </div><!--end grid-->
-    </div><!--end container-->
+
 </template>

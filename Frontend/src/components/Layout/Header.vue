@@ -1,12 +1,25 @@
 <script lang="ts" setup>
 import feather from 'feather-icons';
 
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
+import axiosClient from "@/axios.js";
 
 onMounted(() => {
     // Initialize Feather icons
     feather.replace();
+
+    getMenuItems();
+
 });
+const menuItems = ref();
+const getMenuItems = async () => {
+    try {
+        const response = await axiosClient.get("/get_menu_items");
+        menuItems.value = Array.isArray(response.data) ? response.data : [];
+    } catch (err) {
+        console.log("Failed to Load Menu", err);
+    }
+};
 
 /**
  * Toggle the open state of the submenu when a menu item is clicked.
@@ -66,9 +79,9 @@ function toggleSubmenuMenu() {
             </div>
 
             <!--Login button Start-->
-            <!-- <ul class="buy-button list-none mb-0">
+            <ul class="buy-button list-none mb-0">
                 <li class="inline mb-0">
-                    <a href="/">
+                    <a href="#">
                         <span class="login-btn-primary"><span
                                 class="size-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-primary/5 hover:bg-primary border border-primary/10 hover:border-primary text-primary hover:text-white"><i
                                     data-feather="settings" class="size-4"></i></span></span>
@@ -77,28 +90,21 @@ function toggleSubmenuMenu() {
                                     data-feather="settings" class="size-4"></i></span></span>
                     </a>
                 </li>
-            </ul> -->
+            </ul>
             <!--Login button End-->
 
             <div id="navigation">
                 <!-- Navigation Menu-->
                 <ul class="navigation-menu nav-light">
                     <li><a href="/" class="sub-menu-item">Home</a></li>
-                    <li class="has-submenu parent-menu-item" @click.prevent="toggleSubmenuMenu()">
-                        <a href="javascript:void(0)">About</a><span class="menu-arrow"></span>
-                        <ul class="submenu">
-                            <li><router-link to="/about-our-journey" class="sub-menu-item">Our Journey </router-link>
-                            </li>
-                            <li><router-link to="/about-who-we are" class="sub-menu-item">Who We are</router-link></li>
-                        </ul>
-                    </li>
+                    <li><router-link to="/about-us" class="sub-menu-item">About Us</router-link></li>
                     <li class="has-submenu parent-parent-menu-item">
                         <a href="javascript:void(0)" @click.prevent="toggleSubmenuMenu()">Competitions</a><span
                             class="menu-arrow"></span>
                         <ul class="submenu megamenu">
                             <li>
                                 <ul>
-                                    <li class="megamenu-head">Academic Portfolio</li>
+                                    <li class="megamenu-head">{{ menuItems }}Academic Portfolio</li>
                                     <li><a href="portfolio-modern-two.html" class="sub-menu-item">Two Column</a></li>
                                     <li><a href="portfolio-modern-three.html" class="sub-menu-item">Three Column</a>
                                     </li>

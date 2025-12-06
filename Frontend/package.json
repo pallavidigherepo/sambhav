@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
     "@mdi/font": "^7.4.47",
     "@vitejs/plugin-legacy": "^7.1.0",
     "animate.css": "^4.1.1",
+    "axios": "^1.13.2",
     "choices.js": "^11.1.0",
     "feather-icons": "^4.29.2",
     "gumshoejs": "^5.1.2",
