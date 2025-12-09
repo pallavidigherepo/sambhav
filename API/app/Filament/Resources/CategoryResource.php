@@ -8,12 +8,12 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Actions\EditAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\ActivityCategoryResource\Pages\ListActivityCategories;
-use App\Filament\Resources\ActivityCategoryResource\Pages\CreateActivityCategory;
-use App\Filament\Resources\ActivityCategoryResource\Pages\EditActivityCategory;
-use App\Filament\Resources\ActivityCategoryResource\Pages;
-use App\Filament\Resources\ActivityCategoryResource\RelationManagers;
-use App\Models\ActivityCategory;
+use App\Filament\Resources\CategoryResource\Pages\ListCategories;
+use App\Filament\Resources\CategoryResource\Pages\CreateCategory;
+use App\Filament\Resources\CategoryResource\Pages\EditCategory;
+use App\Filament\Resources\CategoryResource\Pages;
+use App\Filament\Resources\CategoryResource\RelationManagers;
+use App\Models\Category;
 use Filament\Forms;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -21,9 +21,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ActivityCategoryResource extends Resource
+class CategoryResource extends Resource
 {
-    protected static ?string $model = ActivityCategory::class;
+    protected static ?string $model = Category::class;
 
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -124,9 +124,9 @@ class ActivityCategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListActivityCategories::route('/'),
-            'create' => CreateActivityCategory::route('/create'),
-            'edit' => EditActivityCategory::route('/{record}/edit'),
+            'index' => ListCategories::route('/'),
+            'create' => CreateCategory::route('/create'),
+            'edit' => EditCategory::route('/{record}/edit'),
         ];
     }
 }

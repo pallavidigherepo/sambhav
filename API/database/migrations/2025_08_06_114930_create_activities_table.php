@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('organizer_email')->nullable();
             $table->string('organizer_phone')->nullable();
             $table->string('organizer_website')->nullable();
-            $table->foreignId('activity_category_id')->nullable()->constrained('activity_categories')->onDelete('cascade');
+            $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('cascade');
             $table->foreignId('event_id')->nullable()->constrained('events')->onDelete('cascade');
             $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('cascade');
             $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null');

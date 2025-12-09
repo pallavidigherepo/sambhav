@@ -15,7 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id')->unique();
             $table->string('name')->unique();
             $table->string('code')->unique();
-            $table->foreignId('activity_category_id')->nullable()->constrained('activity_categories')->onDelete('cascade');
+            $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('cascade');
             $table->string('description')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
@@ -37,7 +37,8 @@ return new class extends Migration
             $table->longText('sponsorship_info')->nullable();
             $table->string('social_media_links')->nullable();
             $table->string('status')->default('active');
-            $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('cascade');
+            $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('set null');
+            $table->foreignId('event_id')->nullable()->constrained('events')->onDelete('set null');
             $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null');
             $table->foreignId('updated_by')->nullable()->constrained('users')->onDelete('set null');
             $table->foreignId('deleted_by')->nullable()->constrained('users')->onDelete('set null');

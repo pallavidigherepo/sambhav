@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
+use App\Helpers\StringHelper;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Define the macro using the logic from the static method
+        Str::macro('acronym', function (string $string): string {
+            return StringHelper::createAcronym($string);
+        });
     }
 }

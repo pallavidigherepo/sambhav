@@ -19,7 +19,7 @@ return new class extends Migration
             $table->dateTime('start_time')->nullable();
             $table->dateTime('end_time')->nullable();
             $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('cascade');
-            $table->foreignId('activity_category_id')->nullable()->constrained('activity_categories')->onDelete('cascade');
+            $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('cascade');
 
             $table->string('location')->nullable();
 

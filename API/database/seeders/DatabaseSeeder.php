@@ -19,10 +19,11 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
-            ActivityCategorySeeder::class,
+            CategorySeeder::class,
             CountrySeeder::class,
             StateSeeder::class,
             CitySeeder::class,
+            //MenuSeeder::class,
         ]);
     }
 }

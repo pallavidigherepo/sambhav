@@ -38,4 +38,9 @@ class Activity extends Model
     {
         return $this->belongsTo(Event::class);
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

@@ -11,17 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('activity_categories', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id')->unique();
-            $table->string('name')->unique();
-            $table->string('code')->unique();
+            $table->string('name')->nullable();
+            $table->enum('type', ['custom', 'activity', 'competition'])->default('custom'); // link type
+            $table->string('code')->nullable();
             $table->string('description')->nullable();
             $table->string('status')->default('active');
-            $table->foreignId('parent_id')->nullable()->constrained('activity_categories')->onDelete('set null');
+            $table->foreignId('parent_id')->nullable()->constrained('categories')->onDelete('set null');
             $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null');
             $table->foreignId('updated_by')->nullable()->constrained('users')->onDelete('set null');
             $table->foreignId('deleted_by')->nullable()->constrained('users')->onDelete('set null');
-            $table->string('slug')->unique()->nullable();
+            $table->string('slug')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('activity_categories');
+        Schema::dropIfExists('categories');
     }
 };

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Models\Menu;
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/user', function (Request $request) {
@@ -11,7 +12,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('v1/logout', [AuthController::class, 'logout']);
 });
 Route::get('v1/get_menu_items', function() {
+    $menusItems = Menu::where('is_active', true)->get();
+    dd($menusItems);
+    foreach ($menusItems as $item) {
+
+    }
     $menus = ['competitions', 'activities'];
+    
     return json_encode($menus);
 });
 
