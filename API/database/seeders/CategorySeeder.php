@@ -20,62 +20,66 @@ class CategorySeeder extends Seeder
                 // 1. SCIENCE & TECHNOLOGY DOMAIN
                 'science_and_technology' => [
                     'title' => 'Science & Technology Olympiads',
+                    'slug' => 'science-technology-olympiads',
+                    'icon' => 'fa-flask',
                     'children' => [
                         'sof' => [
                             'title' => 'Science Olympiad Foundation (SOF)',
-                            'description' => '/organizer/sof',
+                            'slug' => 'sof',
                             'children' => [
-                                ['title' => 'NSO (National Science Olympiad)', 'description' => '/exam/sof/nso'],
-                                ['title' => 'ICS (International Computer Science)', 'description' => '/exam/sof/ics'],
+                                ['title' => 'NSO (National Science Olympiad)', 'slug' => 'nso-science'],
+                                ['title' => 'ICS (International Computer Science)', 'slug' => 'ics-comp-science'],
                             ],
                         ],
                         'iapt_hbcse' => [
                             'title' => 'HBCSE & IAPT (National Standard Exams)',
-                            'description' => '/organizer/iapt-hbcse',
+                            'slug' => 'hbcse-iapt',
                             'children' => [
-                                ['title' => 'NSEP / INPhO (Physics)', 'description' => '/exam/iapt/nsep'],
-                                ['title' => 'NSEC / INChO (Chemistry)', 'description' => '/exam/iapt/nsec'],
-                                ['title' => 'NSEB / INBO (Biology)', 'description' => '/exam/iapt/nseb'],
-                                ['title' => 'NSEJS (Junior Science)', 'description' => '/exam/iapt/nsejs'],
-                                ['title' => 'NSEA (Astronomy)', 'description' => '/exam/iapt/nsea'],
-                                ['title' => 'NCEWP (Essay Writing in Physics)', 'description' => '/exam/iapt/ncewp'],
+                                ['title' => 'NSEP / INPhO (Physics)', 'slug' => 'nsep-inpho-physics', 'icon' => 'fa-atom'],
+                                ['title' => 'NSEC / INChO (Chemistry)', 'slug' => 'nsec-incho-chemistry', 'icon' => 'fa-atom'],
+                                ['title' => 'NSEB / INBO (Biology)', 'slug' => 'nseb-inbo-biology', 'icon' => 'fa-atom'],
+                                ['title' => 'NSEJS (Junior Science)', 'slug' => 'nsejs-jr-science', 'icon' => 'fa-atom'],
+                                ['title' => 'NSEA (Astronomy)', 'slug' => 'nsea-astronomy', 'icon' => 'fa-satellite-dish'],
+                                ['title' => 'NCEWP (Essay Writing in Physics)', 'slug' => 'ncewp-essay-physics'],
                             ],
                         ],
                         'silverzone' => [
                             'title' => 'SilverZone Olympiads',
-                            'description' => '/organizer/silverzone',
+                            'slug' => 'silverzone-olympiads',
                             'children' => [
-                                ['title' => 'iOS (Science)', 'description' => '/exam/sz/ios'],
-                                ['title' => 'iiO (Informatics)', 'description' => '/exam/sz/iio'],
-                                ['title' => 'STEM (Science, Tech, Eng, Math)', 'description' => '/exam/sz/stem'],
+                                ['title' => 'iOS (Science)', 'slug' => 'ios-science'],
+                                ['title' => 'iiO (Informatics)', 'slug' => 'iio-informatics', 'icon' => 'fa-laptop-code'],
+                                ['title' => 'STEM (Science, Tech, Eng, Math)', 'slug' => 'stem-olympiad', 'icon' => 'fa-atom'],
                             ],
                         ],
                         'unified_council' => [
                             'title' => 'Unified Council',
-                            'description' => '/organizer/unified-council',
+                            'slug' => 'unified-council',
                             'children' => [
-                                ['title' => 'NSTSE (Science Talent Search Exam)', 'description' => '/exam/uc/nstse'],
-                                ['title' => 'UCO (Unified Cyber Olympiad)', 'description' => '/exam/uc/uco'],
+                                ['title' => 'NSTSE (Science Talent Search Exam)', 'slug' => 'nstse-science'],
+                                ['title' => 'UCO (Unified Cyber Olympiad)', 'slug' => 'uco-cyber', 'icon' => 'fa-laptop-code'],
                             ],
                         ],
                         'space_tech' => [
                             'title' => 'Astronomy & Space Technology',
-                            'description' => '/domain/space-tech',
+                            'slug' => 'space-tech',
+                            'icon' => 'fa-satellite-dish',
                             'children' => [
-                                ['title' => 'IOAA (Intl. Astronomy and Astrophysics)', 'description' => '/exam/ioaa'],
-                                ['title' => 'IAO (International Astronomy Olympiad)', 'description' => '/exam/iao'],
-                                ['title' => 'International Space Olympiad (ISO)', 'description' => '/exam/iso'],
-                                ['title' => 'Indian Space Science Olympiad (ISSO)', 'description' => '/exam/isso'],
+                                ['title' => 'IOAA (Intl. Astronomy and Astrophysics)', 'slug' => 'ioaa'],
+                                ['title' => 'IAO (International Astronomy Olympiad)', 'slug' => 'iao'],
+                                ['title' => 'International Space Olympiad (ISO)', 'slug' => 'iso-space'],
+                                ['title' => 'Indian Space Science Olympiad (ISSO)', 'slug' => 'isso-space'],
                             ],
                         ],
                         'innovations' => [
                             'title' => 'Innovation & Research',
-                            'description' => '/domain/innovation',
+                            'slug' => 'innovation-research',
+                            'icon' => 'fa-lightbulb',
                             'children' => [
-                                ['title' => 'Vidyarthi Vigyan Manthan (VVM)', 'description' => '/exam/vvm'],
-                                ['title' => 'INSPIRE-MANAK (Ideas/Innovations)', 'description' => '/scheme/inspire'],
-                                ['title' => 'KVPY (Kishore Vaigyanik Protsahan Yojana)', 'description' => '/scheme/kvpy'],
-                                ['title' => 'NSD2024 (IDEATHON competition)', 'description' => '/comp/nsd-ideathon'],
+                                ['title' => 'Vidyarthi Vigyan Manthan (VVM)', 'slug' => 'vvm'],
+                                ['title' => 'INSPIRE-MANAK (Ideas/Innovations)', 'slug' => 'inspire-manak'],
+                                ['title' => 'KVPY (Kishore Vaigyanik Protsahan Yojana)', 'slug' => 'kvpy'],
+                                ['title' => 'NSD2024 (IDEATHON competition)', 'slug' => 'nsd-ideathon'],
                             ],
                         ],
                     ],
@@ -84,40 +88,41 @@ class CategorySeeder extends Seeder
                 // 2. MATHEMATICS DOMAIN
                 'mathematics' => [
                     'title' => 'Mathematics & Aptitude',
-                    'description' => '/competitions/mathematics',
+                    'slug' => 'mathematics-aptitude',
+                    'icon' => 'fa-calculator',
                     'children' => [
                         'maths_olympiads' => [
                             'title' => 'Major Math Olympiads',
-                            'description' => '/organizer/math-major',
+                            'slug' => 'math-major',
                             'children' => [
-                                ['title' => 'IMO (International Mathematical Olympiad)', 'description' => '/exam/sof/imo'],
-                                ['title' => 'UIMO (Unified Intl. Maths Olympiad)', 'description' => '/exam/uc/uimo'],
-                                ['title' => 'MAESTROMATH OLYMPIAD (MMO)', 'description' => '/exam/mm/mmo'],
+                                ['title' => 'IMO (International Mathematical Olympiad)', 'slug' => 'imo-math'],
+                                ['title' => 'UIMO (Unified Intl. Maths Olympiad)', 'slug' => 'uimo-math'],
+                                ['title' => 'MAESTROMATH OLYMPIAD (MMO)', 'slug' => 'mmo-math'],
                             ],
                         ],
                         'hbcse_advanced' => [
                             'title' => 'HBCSE & Advanced Maths',
-                            'description' => '/organizer/hbcse-math',
+                            'slug' => 'hbcse-math',
                             'children' => [
-                                ['title' => 'IOQM (Indian Olympiad Qualifier in Maths)', 'description' => '/exam/hbcse/ioqm'],
+                                ['title' => 'IOQM (Indian Olympiad Qualifier in Maths)', 'slug' => 'ioqm-math'],
                             ],
                         ],
                         'amti' => [
                             'title' => 'AMTI Talent Contest',
-                            'description' => '/organizer/amti',
+                            'slug' => 'amti-contest',
                             'children' => [
-                                ['title' => 'Gauss, Kaprekar, Bhaskara, Ramanujan, Aryabhata Contests', 'description' => '/exam/amti/contests'],
+                                ['title' => 'Gauss, Kaprekar, Bhaskara, Ramanujan, Aryabhata Contests', 'slug' => 'amti-contests'],
                             ],
                         ],
                         'other_maths' => [
-                            'title' => 'Other Maths Competitions',
-                            'description' => '/domain/math-other',
+                            'title' => 'Other Maths & Financial Competitions',
+                            'slug' => 'math-other',
                             'children' => [
-                                ['title' => 'iOM (SilverZone Maths)', 'description' => '/exam/sz/iom'],
-                                ['title' => 'Ganit Sambodh Pariksha (MCQ)', 'description' => '/exam/ganit-sambodh'],
-                                ['title' => 'Numeromagic (Crossword)', 'description' => '/comp/numeromagic'],
-                                ['title' => 'iRAO (Reasoning & Aptitude)', 'description' => '/exam/sz/irao'],
-                                ['title' => 'FIN-EDU QUEST (Financial Literacy)', 'description' => '/exam/flq'],
+                                ['title' => 'iOM (SilverZone Maths)', 'slug' => 'iom-math'],
+                                ['title' => 'Ganit Sambodh Pariksha (MCQ)', 'slug' => 'ganit-sambodh'],
+                                ['title' => 'Numeromagic (Crossword)', 'slug' => 'numeromagic-crossword'],
+                                ['title' => 'iRAO (Reasoning & Aptitude)', 'slug' => 'irao-reasoning', 'icon' => 'fa-puzzle-piece'],
+                                ['title' => 'FIN-EDU QUEST (Financial Literacy)', 'slug' => 'finedu-quest', 'icon' => 'fa-chart-line'],
                             ],
                         ],
                     ],
@@ -126,36 +131,41 @@ class CategorySeeder extends Seeder
                 // 3. LANGUAGE ARTS DOMAIN
                 'language_arts' => [
                     'title' => 'Language & Communication',
-                    'description' => '/competitions/language-arts',
+                    'slug' => 'language-communication',
+                    'icon' => 'fa-book-open',
                     'children' => [
                         'english_olympiads' => [
                             'title' => 'English Olympiads & Spelling',
-                            'description' => '/domain/english',
+                            'slug' => 'english-olympiads',
+                            'icon' => 'fa-language',
                             'children' => [
-                                ['title' => 'IEO (SOF English Olympiad)', 'description' => '/exam/sof/ieo'],
-                                ['title' => 'UIEO (Unified Intl. English Olympiad)', 'description' => '/exam/uc/uieo'],
-                                ['title' => 'iOEL (SilverZone English Olympiad)', 'description' => '/exam/sz/ioel'],
-                                ['title' => 'ISB Spelling Bee International', 'description' => '/exam/isb-intl'],
-                                ['title' => 'India Spelling Bee', 'description' => '/exam/isb-india'],
-                                ['title' => 'Spell Bee (English/Hindi/Bangla)', 'description' => '/exam/spell-bee'],
+                                ['title' => 'IEO (SOF English Olympiad)', 'slug' => 'ieo-english'],
+                                ['title' => 'UIEO (Unified Intl. English Olympiad)', 'slug' => 'uieo-english'],
+                                ['title' => 'iOEL (SilverZone English Olympiad)', 'slug' => 'ioel-english'],
+                                ['title' => 'ISB Spelling Bee International', 'slug' => 'isb-intl'],
+                                ['title' => 'India Spelling Bee', 'slug' => 'isb-india'],
+                                ['title' => 'Spell Bee (English/Hindi/Bangla)', 'slug' => 'spell-bee'],
                             ],
                         ],
                         'other_languages' => [
-                            'title' => 'Hindi & Other Languages',
-                            'description' => '/domain/languages',
+                            'title' => 'Hindi & General Knowledge',
+                            'slug' => 'hindi-gk',
                             'children' => [
-                                ['title' => 'IHO (SOF Hindi Olympiad)', 'description' => '/exam/sof/iho'],
-                                ['title' => 'ABHA (SilverZone Hindi)', 'description' => '/exam/sz/abha'],
+                                ['title' => 'IHO (SOF Hindi Olympiad)', 'slug' => 'iho-hindi'],
+                                ['title' => 'ABHA (SilverZone Hindi)', 'slug' => 'abha-hindi'],
+                                ['title' => 'IGKO (SOF General Knowledge)', 'slug' => 'igko-gk'],
+                                ['title' => 'SKGK (SilverZone General Knowledge)', 'slug' => 'skgk-gk'],
                             ],
                         ],
                         'literary_speech' => [
                             'title' => 'Literary & Communication Competitions',
-                            'description' => '/domain/literary',
+                            'slug' => 'literary-speech',
+                            'icon' => 'fa-microphone-alt',
                             'children' => [
-                                ['title' => 'THE NEXT VOICE (Spoken Word/Poetry/Storytelling)', 'description' => '/comp/ht-next-voice'],
-                                ['title' => 'Read N Grow competition (Literary)', 'description' => '/comp/read-n-grow'],
-                                ['title' => 'Dinanath Dasture Memorial (Storytelling)', 'description' => '/comp/dasture-story'],
-                                ['title' => 'Mein Vivekanand bol Raha hu (Speech)', 'description' => '/comp/vivekanand-speech'],
+                                ['title' => 'THE NEXT VOICE (Spoken Word/Poetry/Storytelling)', 'slug' => 'ht-next-voice'],
+                                ['title' => 'Read N Grow competition (Literary)', 'slug' => 'read-n-grow'],
+                                ['title' => 'Dinanath Dasture Memorial (Storytelling)', 'slug' => 'dasture-story'],
+                                ['title' => 'Mein Vivekanand bol Raha hu (Speech)', 'slug' => 'vivekanand-speech'],
                             ],
                         ],
                     ],
@@ -164,25 +174,26 @@ class CategorySeeder extends Seeder
                 // 4. SOCIAL STUDIES & COMMERCE DOMAIN
                 'social_and_commerce' => [
                     'title' => 'Social Studies & Commerce',
-                    'description' => '/competitions/social-commerce',
+                    'slug' => 'social-commerce',
+                    'icon' => 'fa-globe-americas',
                     'children' => [
                         'social_studies' => [
-                            'title' => 'Social Studies & General Knowledge',
-                            'description' => '/domain/social-studies',
+                            'title' => 'Social Studies, History & Civics',
+                            'slug' => 'social-studies',
+                            'icon' => 'fa-university',
                             'children' => [
-                                ['title' => 'ISSO (SOF Social Studies)', 'description' => '/exam/sof/isso'],
-                                ['title' => 'iSSO (SilverZone Social Studies)', 'description' => '/exam/sz/isso'],
-                                ['title' => 'National Social Studies Olympiad (ITO)', 'description' => '/exam/ito/nsso'],
-                                ['title' => 'IGKO (SOF General Knowledge)', 'description' => '/exam/sof/igko'],
-                                ['title' => 'SKGK (SilverZone General Knowledge)', 'description' => '/exam/sz/skgk'],
+                                ['title' => 'ISSO (SOF Social Studies)', 'slug' => 'isso-social'],
+                                ['title' => 'iSSO (SilverZone Social Studies)', 'slug' => 'isso-social-sz'],
+                                ['title' => 'National Social Studies Olympiad (ITO)', 'slug' => 'nsso-ito'],
                             ],
                         ],
                         'commerce' => [
-                            'title' => 'Commerce',
-                            'description' => '/domain/commerce',
+                            'title' => 'Commerce & Financial Literacy',
+                            'slug' => 'commerce-finance',
+                            'icon' => 'fa-chart-line',
                             'children' => [
-                                ['title' => 'ICO (SOF Commerce Olympiad)', 'description' => '/exam/sof/ico'],
-                                ['title' => 'ISCO (SilverZone Commerce Olympiad)', 'description' => '/exam/sz/isco'],
+                                ['title' => 'ICO (SOF Commerce Olympiad)', 'slug' => 'ico-commerce'],
+                                ['title' => 'ISCO (SilverZone Commerce Olympiad)', 'slug' => 'isco-commerce-sz'],
                             ],
                         ],
                     ],
@@ -191,129 +202,54 @@ class CategorySeeder extends Seeder
                 // 5. ACTIVITIES & SPORTS DOMAIN
                 'activities_and_sports' => [
                     'title' => 'Co-Curricular Activities & Sports',
-                    'description' => '/activities',
+                    'slug' => 'activities-sports',
+                    'icon' => 'fa-running',
                     'children' => [
                         'debate_quiz' => [
-                            'title' => 'Debate & Quiz',
-                            'description' => '/activities/debate-quiz',
+                            'title' => 'Debate & Theme Competitions',
+                            'slug' => 'debate-quiz',
+                            'icon' => 'fa-question-circle',
                             'children' => [
-                                ['title' => 'Bhavan\'s Munshi Memorial Inter-School Debate', 'description' => '/activity/bhavans-debate'],
-                                ['title' => 'Inter-School Quiz Competition (Theme-based)', 'description' => '/activity/inter-school-quiz'],
+                                ['title' => 'Bhavan\'s Munshi Memorial Inter-School Debate', 'slug' => 'bhavans-debate'],
+                                ['title' => 'Inter-School Quiz Competition (Theme-based)', 'slug' => 'inter-school-quiz'],
                             ],
                         ],
                         'sports_yoga' => [
                             'title' => 'Sports & Physical Activities',
-                            'description' => '/activities/sports',
+                            'slug' => 'sports-yoga',
+                            'icon' => 'fa-basketball-ball',
                             'children' => [
-                                ['title' => 'Sportathon (Basketball, Football, Table Tennis)', 'description' => '/activity/sportathon'],
-                                ['title' => 'Yogasan competition', 'description' => '/activity/yogasan'],
-                            ],
-                        ],
-                    ],
-                ],
-            ],
-            'activity' => [
-                // 1. SCIENCE & TECHNOLOGY DOMAIN
-                'science_and_technology' => [
-                    'title' => 'Science & Technology Olympiads',
-                    'children' => [
-                        'sof' => [
-                            'title' => 'Science Olympiad Foundation (SOF)',
-                            'description' => '/organizer/sof',
-                            'children' => [
-                                ['title' => 'NSO (National Science Olympiad)', 'description' => '/exam/sof/nso'],
-                                ['title' => 'ICS (International Computer Science)', 'description' => '/exam/sof/ics'],
-                            ],
-                        ],
-                        'iapt_hbcse' => [
-                            'title' => 'HBCSE & IAPT (National Standard Exams)',
-                            'description' => '/organizer/iapt-hbcse',
-                            'children' => [
-                                ['title' => 'NSEP / INPhO (Physics)', 'description' => '/exam/iapt/nsep'],
-                                ['title' => 'NSEC / INChO (Chemistry)', 'description' => '/exam/iapt/nsec'],
-                                ['title' => 'NSEB / INBO (Biology)', 'description' => '/exam/iapt/nseb'],
-                                ['title' => 'NSEJS (Junior Science)', 'description' => '/exam/iapt/nsejs'],
-                                ['title' => 'NSEA (Astronomy)', 'description' => '/exam/iapt/nsea'],
-                                ['title' => 'NCEWP (Essay Writing in Physics)', 'description' => '/exam/iapt/ncewp'],
-                            ],
-                        ],
-                        'silverzone' => [
-                            'title' => 'SilverZone Olympiads',
-                            'description' => '/organizer/silverzone',
-                            'children' => [
-                                ['title' => 'iOS (Science)', 'description' => '/exam/sz/ios'],
-                                ['title' => 'iiO (Informatics)', 'description' => '/exam/sz/iio'],
-                                ['title' => 'STEM (Science, Tech, Eng, Math)', 'description' => '/exam/sz/stem'],
-                            ],
-                        ],
-                        'unified_council' => [
-                            'title' => 'Unified Council',
-                            'description' => '/organizer/unified-council',
-                            'children' => [
-                                ['title' => 'NSTSE (Science Talent Search Exam)', 'description' => '/exam/uc/nstse'],
-                                ['title' => 'UCO (Unified Cyber Olympiad)', 'description' => '/exam/uc/uco'],
-                            ],
-                        ],
-                        'space_tech' => [
-                            'title' => 'Astronomy & Space Technology',
-                            'description' => '/domain/space-tech',
-                            'children' => [
-                                ['title' => 'IOAA (Intl. Astronomy and Astrophysics)', 'description' => '/exam/ioaa'],
-                                ['title' => 'IAO (International Astronomy Olympiad)', 'description' => '/exam/iao'],
-                                ['title' => 'International Space Olympiad (ISO)', 'description' => '/exam/iso'],
-                                ['title' => 'Indian Space Science Olympiad (ISSO)', 'description' => '/exam/isso'],
-                            ],
-                        ],
-                        'innovations' => [
-                            'title' => 'Innovation & Research',
-                            'description' => '/domain/innovation',
-                            'children' => [
-                                ['title' => 'Vidyarthi Vigyan Manthan (VVM)', 'description' => '/exam/vvm'],
-                                ['title' => 'INSPIRE-MANAK (Ideas/Innovations)', 'description' => '/scheme/inspire'],
-                                ['title' => 'KVPY (Kishore Vaigyanik Protsahan Yojana)', 'description' => '/scheme/kvpy'],
-                                ['title' => 'NSD2024 (IDEATHON competition)', 'description' => '/comp/nsd-ideathon'],
+                                ['title' => 'Sportathon (Basketball, Football, Table Tennis)', 'slug' => 'sportathon-sports'],
+                                ['title' => 'Yogasan competition', 'slug' => 'yogasan-comp'],
                             ],
                         ],
                     ],
                 ],
 
-                // 2. MATHEMATICS DOMAIN
-                'mathematics' => [
-                    'title' => 'Mathematics & Aptitude',
-                    'description' => '/competitions/mathematics',
+            ],
+            'activity' => [
+                // 5. ACTIVITIES & SPORTS DOMAIN
+                'activities_and_sports' => [
+                    'title' => 'Co-Curricular Activities & Sports',
+                    'slug' => 'activities-sports',
+                    'icon' => 'fa-running',
                     'children' => [
-                        'maths_olympiads' => [
-                            'title' => 'Major Math Olympiads',
-                            'description' => '/organizer/math-major',
+                        'debate_quiz' => [
+                            'title' => 'Debate & Theme Competitions',
+                            'slug' => 'debate-quiz',
+                            'icon' => 'fa-question-circle',
                             'children' => [
-                                ['title' => 'IMO (International Mathematical Olympiad)', 'description' => '/exam/sof/imo'],
-                                ['title' => 'UIMO (Unified Intl. Maths Olympiad)', 'description' => '/exam/uc/uimo'],
-                                ['title' => 'MAESTROMATH OLYMPIAD (MMO)', 'description' => '/exam/mm/mmo'],
+                                ['title' => 'Bhavan\'s Munshi Memorial Inter-School Debate', 'slug' => 'bhavans-debate'],
+                                ['title' => 'Inter-School Quiz Competition (Theme-based)', 'slug' => 'inter-school-quiz'],
                             ],
                         ],
-                        'hbcse_advanced' => [
-                            'title' => 'HBCSE & Advanced Maths',
-                            'description' => '/organizer/hbcse-math',
+                        'sports_yoga' => [
+                            'title' => 'Sports & Physical Activities',
+                            'slug' => 'sports-yoga',
+                            'icon' => 'fa-basketball-ball',
                             'children' => [
-                                ['title' => 'IOQM (Indian Olympiad Qualifier in Maths)', 'description' => '/exam/hbcse/ioqm'],
-                            ],
-                        ],
-                        'amti' => [
-                            'title' => 'AMTI Talent Contest',
-                            'description' => '/organizer/amti',
-                            'children' => [
-                                ['title' => 'Gauss, Kaprekar, Bhaskara, Ramanujan, Aryabhata Contests', 'description' => '/exam/amti/contests'],
-                            ],
-                        ],
-                        'other_maths' => [
-                            'title' => 'Other Maths Competitions',
-                            'description' => '/domain/math-other',
-                            'children' => [
-                                ['title' => 'iOM (SilverZone Maths)', 'description' => '/exam/sz/iom'],
-                                ['title' => 'Ganit Sambodh Pariksha (MCQ)', 'description' => '/exam/ganit-sambodh'],
-                                ['title' => 'Numeromagic (Crossword)', 'description' => '/comp/numeromagic'],
-                                ['title' => 'iRAO (Reasoning & Aptitude)', 'description' => '/exam/sz/irao'],
-                                ['title' => 'FIN-EDU QUEST (Financial Literacy)', 'description' => '/exam/flq'],
+                                ['title' => 'Sportathon (Basketball, Football, Table Tennis)', 'slug' => 'sportathon-sports'],
+                                ['title' => 'Yogasan competition', 'slug' => 'yogasan-comp'],
                             ],
                         ],
                     ],
@@ -343,6 +279,7 @@ class CategorySeeder extends Seeder
             'parent_id' => $parentId,
             'type' => $type,
             'code' => Str::acronym($data['title']),
+            'icon' => $data['icon'] ?? null,
         ]);
 
         // Check if there are nested children

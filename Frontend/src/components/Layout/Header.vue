@@ -12,10 +12,14 @@ onMounted(() => {
 
 });
 const menuItems = ref();
+const competitionMenu = ref();
+const activityMenu = ref();
 const getMenuItems = async () => {
     try {
         const response = await axiosClient.get("/get_menu_items");
-        menuItems.value = Array.isArray(response.data) ? response.data : [];
+        menuItems.value = response.data;
+        competitionMenu.value = menuItems.value.competition;
+        activityMenu.value = menuItems.value.activity;
     } catch (err) {
         console.log("Failed to Load Menu", err);
     }
@@ -102,165 +106,54 @@ function toggleSubmenuMenu() {
                         <a href="javascript:void(0)" @click.prevent="toggleSubmenuMenu()">Competitions</a><span
                             class="menu-arrow"></span>
                         <ul class="submenu megamenu">
-                            <li>
-                                <ul>
-                                    <li class="megamenu-head">{{ menuItems }}Academic Portfolio</li>
-                                    <li><a href="portfolio-modern-two.html" class="sub-menu-item">Two Column</a></li>
-                                    <li><a href="portfolio-modern-three.html" class="sub-menu-item">Three Column</a>
-                                    </li>
-                                    <li><a href="portfolio-modern-four.html" class="sub-menu-item">Four Column</a></li>
-                                    <li><a href="portfolio-modern-five.html" class="sub-menu-item">Five Column</a></li>
-                                    <li><a href="portfolio-modern-six.html" class="sub-menu-item">Six Column</a></li>
-                                </ul>
-                            </li>
+                            <template v-for="item in competitionMenu" :key="item.id">
+                                <li>
+                                    <ul>
+                                        <li class="megamenu-head">{{ item.name }}</li>
+                                        <template v-if="item.children">
+                                            <template v-for="submenu in item.children" :key="submenu.id">
+                                                <li>
+                                                    <router-link :to="submenu.route" class="sub-menu-item">{{
+                                                        submenu.name }}</router-link>
+                                                </li>
+                                            </template>
+                                        </template>
 
-                            <li>
-                                <ul>
-                                    <li class="megamenu-head"> Classic Portfolio</li>
-                                    <li><a href="portfolio-classic-two.html" class="sub-menu-item">Two Column</a></li>
-                                    <li><a href="portfolio-classic-three.html" class="sub-menu-item">Three Column</a>
-                                    </li>
-                                    <li><a href="portfolio-classic-four.html" class="sub-menu-item">Four Column</a></li>
-                                    <li><a href="portfolio-classic-five.html" class="sub-menu-item">Five Column</a></li>
-                                    <li><a href="portfolio-classic-six.html" class="sub-menu-item">Six Column</a></li>
-                                </ul>
-                            </li>
+                                    </ul>
+                                </li>
+                            </template>
 
-                            <li>
-                                <ul>
-                                    <li class="megamenu-head">Creative Portfolio</li>
-                                    <li><a href="portfolio-creative-two.html" class="sub-menu-item">Two Column</a></li>
-                                    <li><a href="portfolio-creative-three.html" class="sub-menu-item">Three Column</a>
-                                    </li>
-                                    <li><a href="portfolio-creative-four.html" class="sub-menu-item">Four Column</a>
-                                    </li>
-                                    <li><a href="portfolio-creative-five.html" class="sub-menu-item">Five Column</a>
-                                    </li>
-                                    <li><a href="portfolio-creative-six.html" class="sub-menu-item">Six Column</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <ul>
-                                    <li class="megamenu-head">Masonry Portfolio</li>
-                                    <li><a href="portfolio-masonry-two.html" class="sub-menu-item">Two Column</a></li>
-                                    <li><a href="portfolio-masonry-three.html" class="sub-menu-item">Three Column</a>
-                                    </li>
-                                    <li><a href="portfolio-masonry-four.html" class="sub-menu-item">Four Column</a></li>
-                                    <li><a href="portfolio-masonry-five.html" class="sub-menu-item">Five Column</a></li>
-                                    <li><a href="portfolio-masonry-six.html" class="sub-menu-item">Six Column</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <ul>
-                                    <li class="megamenu-head">Portfolio Detail</li>
-                                    <li><a href="portfolio-detail-one.html" class="sub-menu-item">Portfolio One</a></li>
-                                    <li><a href="portfolio-detail-two.html" class="sub-menu-item">Portfolio Two</a></li>
-                                    <li><a href="portfolio-detail-three.html" class="sub-menu-item">Portfolio Three</a>
-                                    </li>
-                                    <li><a href="portfolio-detail-four.html" class="sub-menu-item">Portfolio Four</a>
-                                    </li>
-                                </ul>
-                            </li>
                         </ul>
                     </li>
                     <li class="has-submenu parent-parent-menu-item">
                         <a href="javascript:void(0)" @click.prevent="toggleSubmenuMenu()">Activities</a><span
                             class="menu-arrow"></span>
                         <ul class="submenu megamenu">
-                            <li>
-                                <ul>
-                                    <li class="megamenu-head">Academic Portfolio</li>
-                                    <li><a href="portfolio-modern-two.html" class="sub-menu-item">Two Column</a></li>
-                                    <li><a href="portfolio-modern-three.html" class="sub-menu-item">Three Column</a>
-                                    </li>
-                                    <li><a href="portfolio-modern-four.html" class="sub-menu-item">Four Column</a></li>
-                                    <li><a href="portfolio-modern-five.html" class="sub-menu-item">Five Column</a></li>
-                                    <li><a href="portfolio-modern-six.html" class="sub-menu-item">Six Column</a></li>
-                                </ul>
-                            </li>
+                            <template v-for="activityItem in activityMenu" :key="activityItem.id">
+                                <li>
+                                    <ul>
+                                        <li class="megamenu-head">{{ activityItem.name }}</li>
+                                        <template v-if="activityItem.children">
+                                            <template v-for="activitySubmenu in activityItem.children"
+                                                :key="activitySubmenu.id">
+                                                <li>
+                                                    <router-link :to="activitySubmenu.route" class="sub-menu-item">{{
+                                                        activitySubmenu.name }}</router-link>
+                                                </li>
+                                            </template>
+                                        </template>
 
-                            <li>
-                                <ul>
-                                    <li class="megamenu-head"> Classic Portfolio</li>
-                                    <li><a href="portfolio-classic-two.html" class="sub-menu-item">Two Column</a></li>
-                                    <li><a href="portfolio-classic-three.html" class="sub-menu-item">Three Column</a>
-                                    </li>
-                                    <li><a href="portfolio-classic-four.html" class="sub-menu-item">Four Column</a></li>
-                                    <li><a href="portfolio-classic-five.html" class="sub-menu-item">Five Column</a></li>
-                                    <li><a href="portfolio-classic-six.html" class="sub-menu-item">Six Column</a></li>
-                                </ul>
-                            </li>
+                                    </ul>
+                                </li>
+                            </template>
 
-                            <li>
-                                <ul>
-                                    <li class="megamenu-head">Creative Portfolio</li>
-                                    <li><a href="portfolio-creative-two.html" class="sub-menu-item">Two Column</a></li>
-                                    <li><a href="portfolio-creative-three.html" class="sub-menu-item">Three Column</a>
-                                    </li>
-                                    <li><a href="portfolio-creative-four.html" class="sub-menu-item">Four Column</a>
-                                    </li>
-                                    <li><a href="portfolio-creative-five.html" class="sub-menu-item">Five Column</a>
-                                    </li>
-                                    <li><a href="portfolio-creative-six.html" class="sub-menu-item">Six Column</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <ul>
-                                    <li class="megamenu-head">Masonry Portfolio</li>
-                                    <li><a href="portfolio-masonry-two.html" class="sub-menu-item">Two Column</a></li>
-                                    <li><a href="portfolio-masonry-three.html" class="sub-menu-item">Three Column</a>
-                                    </li>
-                                    <li><a href="portfolio-masonry-four.html" class="sub-menu-item">Four Column</a></li>
-                                    <li><a href="portfolio-masonry-five.html" class="sub-menu-item">Five Column</a></li>
-                                    <li><a href="portfolio-masonry-six.html" class="sub-menu-item">Six Column</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <ul>
-                                    <li class="megamenu-head">Portfolio Detail</li>
-                                    <li><a href="portfolio-detail-one.html" class="sub-menu-item">Portfolio One</a></li>
-                                    <li><a href="portfolio-detail-two.html" class="sub-menu-item">Portfolio Two</a></li>
-                                    <li><a href="portfolio-detail-three.html" class="sub-menu-item">Portfolio Three</a>
-                                    </li>
-                                    <li><a href="portfolio-detail-four.html" class="sub-menu-item">Portfolio Four</a>
-                                    </li>
-                                </ul>
-                            </li>
                         </ul>
                     </li>
 
                     <li><router-link to="/blogs" class="sub-menu-item">Blogs</router-link></li>
-
-                    <li class="has-submenu parent-menu-item">
-                        <a href="javascript:void(0)" @click.prevent="toggleSubmenuMenu()">Events</a><span
-                            class="menu-arrow"></span>
-                        <ul class="submenu">
-                            <li><a href="portfolio-modern-two.html" class="sub-menu-item">Two Column</a></li>
-                            <li><a href="portfolio-modern-three.html" class="sub-menu-item">Three Column</a></li>
-                            <li><a href="portfolio-modern-four.html" class="sub-menu-item">Four Column</a></li>
-                            <li><a href="portfolio-modern-five.html" class="sub-menu-item">Five Column</a></li>
-                            <li><a href="portfolio-modern-six.html" class="sub-menu-item">Six Column</a></li>
-                        </ul>
-                    </li>
-
+                    <li><router-link to="/events" class="sub-menu-item">Events</router-link></li>
                     <li><router-link to="/winners" class="sub-menu-item">Winners</router-link></li>
-
-                    <li class="has-submenu parent-menu-item">
-                        <a href="javascript:void(0)" @click.prevent="toggleSubmenuMenu()">Coaches</a><span
-                            class="menu-arrow"></span>
-                        <ul class="submenu">
-                            <li><a href="portfolio-modern-two.html" class="sub-menu-item">Two Column</a></li>
-                            <li><a href="portfolio-modern-three.html" class="sub-menu-item">Three Column</a></li>
-                            <li><a href="portfolio-modern-four.html" class="sub-menu-item">Four Column</a></li>
-                            <li><a href="portfolio-modern-five.html" class="sub-menu-item">Five Column</a></li>
-                            <li><a href="portfolio-modern-six.html" class="sub-menu-item">Six Column</a></li>
-                        </ul>
-                    </li>
-
+                    <li><router-link to="/coaches" class="sub-menu-item">Coaches</router-link></li>
                     <li><router-link to="/contact-us" class="sub-menu-item">Contact</router-link></li>
                 </ul><!--end navigation menu-->
             </div><!--end navigation-->
