@@ -26,7 +26,9 @@
                                     <li class="inline"><a href="https://www.facebook.com/shreethemes" target="_blank"
                                             class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-gray-700 text-gray-400 hover:text-white rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"><i
                                                 class="uil uil-facebook-f align-middle" title="facebook"></i></a></li>
-                                    <li class="inline"><a href="https://www.instagram.com/shreethemes/" target="_blank"
+                                    <li class="inline"><a
+                                            href="https://www.instagram.com/apaar_sambhavana?igsh=dHR6aTlwc3B0OGNu"
+                                            target="_blank"
                                             class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-gray-700 text-gray-400 hover:text-white rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"><i
                                                 class="uil uil-instagram align-middle" title="instagram"></i></a></li>
                                     <li class="inline"><a href="https://twitter.com/shreethemes" target="_blank"
