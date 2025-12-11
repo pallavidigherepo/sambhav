@@ -109,7 +109,9 @@ function toggleSubmenuMenu() {
                             <template v-for="item in competitionMenu" :key="item.id">
                                 <li>
                                     <ul>
-                                        <li class="megamenu-head">{{ item.name }}</li>
+                                        <li class="megamenu-head"
+                                            style="text-size-adjust: inherit; text-wrap-mode: wrap;">{{ item.name }}
+                                        </li>
                                         <template v-if="item.children">
                                             <template v-for="submenu in item.children" :key="submenu.id">
                                                 <li>

@@ -5,3 +5,17 @@
 .bg-about-us {
     background: url('/assets/images/company/aboutus.jpg');
 }
+
+#topnav {
+    & .navigation-menu {
+        &>li {
+            & .submenu {
+                & li {
+                    & a {
+                        text-wrap-mode: wrap;
+                    }
+                }
+            }
+        }
+    }
+}
