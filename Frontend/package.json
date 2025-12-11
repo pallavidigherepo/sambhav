@@ -12,6 +12,8 @@
     "@iconscout/unicons": "^4.2.0",
     "@mdi/font": "^7.4.47",
     "@vitejs/plugin-legacy": "^7.1.0",
+    "@vuelidate/core": "^2.0.3",
+    "@vuelidate/validators": "^2.0.4",
     "animate.css": "^4.1.1",
     "axios": "^1.13.2",
     "choices.js": "^11.1.0",

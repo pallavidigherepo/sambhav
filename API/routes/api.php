@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\ContactFormController;
 use App\Services\DynamicMenuService;
 
 
@@ -23,3 +24,4 @@ Route::post('v1/reset_password', [AuthController::class, 'reset_password'])->nam
 Route::post('v1/register', [AuthController::class, 'register']);
 Route::get('v1/verify_email/{token}', [AuthController::class, 'verifyEmail'])->name('email.verify');
 
+Route::post('v1/contact', [ContactFormController::class, 'store']);

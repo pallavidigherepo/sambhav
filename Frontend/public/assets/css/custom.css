@@ -1,10 +1,11 @@
 .bg-home {
-    background: url('/assets/images/charity/bg.jpg')
+    background: url('/assets/images/apaar_home_bg.png')
 }
 
 .bg-about-us {
     background: url('/assets/images/company/aboutus.jpg');
 }
+
 
 #topnav {
     & .navigation-menu {

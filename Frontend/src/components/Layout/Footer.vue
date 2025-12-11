@@ -51,22 +51,19 @@
                                                 class="uil uil-angle-right-b"></i> About us</a></li>
                                     <li class="mt-[10px]"><a href="page-services.html"
                                             class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> Services</a></li>
+                                                class="uil uil-angle-right-b"></i> Blogs</a></li>
                                     <li class="mt-[10px]"><a href="page-team.html"
                                             class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> Team</a></li>
+                                                class="uil uil-angle-right-b"></i> Events</a></li>
                                     <li class="mt-[10px]"><a href="page-pricing.html"
                                             class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> Pricing</a></li>
+                                                class="uil uil-angle-right-b"></i> Winners</a></li>
                                     <li class="mt-[10px]"><a href="portfolio-creative-four.html"
                                             class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> Project</a></li>
+                                                class="uil uil-angle-right-b"></i> Coaches</a></li>
                                     <li class="mt-[10px]"><a href="blog.html"
                                             class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> Blog</a></li>
-                                    <li class="mt-[10px]"><a href="auth-login.html"
-                                            class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> Login</a></li>
+                                                class="uil uil-angle-right-b"></i> Contact</a></li>
                                 </ul>
                             </div><!--end col-->
 
@@ -82,12 +79,7 @@
                                     <li class="mt-[10px]"><a href="documentation.html"
                                             class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
                                                 class="uil uil-angle-right-b"></i> Documentation</a></li>
-                                    <li class="mt-[10px]"><a href="changelog.html"
-                                            class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> Changelog</a></li>
-                                    <li class="mt-[10px]"><a href="widget.html"
-                                            class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> Widget</a></li>
+
                                 </ul>
                             </div><!--end col-->
 
@@ -126,18 +118,7 @@
                         <p class="mb-0 text-gray-100">© {{ new Date().getFullYear() }} ApaarSambhavana.</p>
                     </div>
 
-                    <ul class="list-none md:text-end text-center mt-6 md:mt-0">
-                        <li class="inline"><a href=""><img src="/assets/images/payments/american-ex.png"
-                                    class="max-h-6 inline" title="American Express" alt=""></a></li>
-                        <li class="inline"><a href=""><img src="/assets/images/payments/discover.png"
-                                    class="max-h-6 inline" title="Discover" alt=""></a></li>
-                        <li class="inline"><a href=""><img src="/assets/images/payments/master-card.png"
-                                    class="max-h-6 inline" title="Master Card" alt=""></a></li>
-                        <li class="inline"><a href=""><img src="/assets/images/payments/paypal.png"
-                                    class="max-h-6 inline" title="Paypal" alt=""></a></li>
-                        <li class="inline"><a href=""><img src="/assets/images/payments/visa.png" class="max-h-6 inline"
-                                    title="Visa" alt=""></a></li>
-                    </ul>
+
                 </div><!--end grid-->
             </div><!--end container-->
         </div>

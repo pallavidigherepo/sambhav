@@ -1,6 +1,84 @@
 <script setup lang="ts">
 import PageTitle from '../components/PageTitle.vue';
+import { ref, reactive, computed } from 'vue';
+import axiosClient from '@/axios';
+import useVuelidate from '@vuelidate/core';
+import { required, email, helpers } from '@vuelidate/validators';
 
+// 1. Form State
+const form = reactive({
+    name: '',
+    email: '',
+    subject: '',
+    comments: '',
+});
+
+// 2. Validation Rules
+const rules = computed(() => ({
+    form: {
+        name: { required: helpers.withMessage('Name is required.', required) },
+        email: {
+            required: helpers.withMessage('Email is required.', required),
+            email: helpers.withMessage('Must be a valid email address.', email),
+        },
+        subject: { required: helpers.withMessage('Subject is required.', required) },
+        comments: { required: helpers.withMessage('Message is required.', required) },
+    },
+}));
+
+// 3. Initialize Vuelidate
+const v$ = useVuelidate(rules, { form });
+
+// 4. Submission Logic State
+const isSubmitting = ref(false);
+const errorMsg = ref('');
+const successMsg = ref('');
+
+// 5. Submission Function
+async function submitForm() {
+    // Clear previous messages
+    errorMsg.value = '';
+    successMsg.value = '';
+
+    // 5a. Trigger Vuelidate validation
+    const isFormValid = await v$.value.form.$validate();
+
+    if (!isFormValid) {
+        // Vuelidate handles displaying errors near fields, 
+        // but we can add a general message if needed
+        errorMsg.value = 'Please correct the highlighted errors in the form.';
+        return;
+    }
+
+    // Vuelidate passed, proceed with API call
+    isSubmitting.value = true;
+
+    try {
+        const response = await axiosClient.post('/contact', form);
+
+        if (response.status === 200 || response.status === 201) {
+            successMsg.value = 'Your message has been sent successfully!';
+
+            // Reset form state and validation state
+            form.name = '';
+            form.email = '';
+            form.subject = '';
+            form.comments = '';
+            v$.value.$reset(); // Important for resetting Vuelidate state
+        }
+    } catch (error) {
+        console.error('Submission Error:', error);
+
+        // Handle Laravel validation errors (422) or other server errors
+        if (error.response && error.response.status === 422) {
+            errorMsg.value = 'Server validation failed. Please check your inputs.';
+        } else {
+            errorMsg.value = 'An unexpected error occurred while sending your message. Please try again later.';
+        }
+    } finally {
+        isSubmitting.value = false;
+    }
+}
 </script>
 <template>
     <!-- Start Hero -->
@@ -83,19 +161,23 @@ import PageTitle from '../components/PageTitle.vue';
                         <div class="bg-white dark:bg-slate-900 rounded-md shadow-sm dark:shadow-gray-800 p-6">
                             <h3 class="mb-6 text-2xl leading-normal font-medium">Get in touch !</h3>
 
-                            <form method="post" name="myForm" id="myForm" onsubmit="return validateForm()">
-                                <p class="mb-0" id="error-msg"></p>
-                                <div id="simple-msg"></div>
+                            <form @submit.prevent="submitForm" id="myForm">
+                                <p class="mb-0 text-red-600" v-if="errorMsg">{{ errorMsg }}</p>
+                                <div id="simple-msg" class="text-green-600" v-if="successMsg">{{ successMsg }}</div>
+
                                 <div class="grid lg:grid-cols-12 lg:gap-6">
                                     <div class="lg:col-span-6 mb-5">
                                         <div class="text-start">
                                             <label for="name" class="font-semibold">Your Name:</label>
                                             <div class="form-icon relative mt-2">
-                                                <i data-feather="user" class="size-4 absolute top-3 start-4"></i>
-                                                <input name="name" id="name" type="text"
+                                                <i class="size-4 absolute top-3 start-4">👤</i>
+                                                <input v-model="v$.form.name.$model" id="name" type="text"
                                                     class="form-input ps-11 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-primary dark:border-gray-800 dark:focus:border-primary focus:ring-0"
-                                                    placeholder="Name :">
+                                                    placeholder="Name :"
+                                                    :class="{ 'border-red-500': v$.form.name.$error }">
                                             </div>
+                                            <span class="text-xs text-red-500" v-if="v$.form.name.$error">Name is
+                                                required.</span>
                                         </div>
                                     </div>
 
@@ -103,10 +185,14 @@ import PageTitle from '../components/PageTitle.vue';
                                         <div class="text-start">
                                             <label for="email" class="font-semibold">Your Email:</label>
                                             <div class="form-icon relative mt-2">
-                                                <i data-feather="mail" class="size-4 absolute top-3 start-4"></i>
-                                                <input name="email" id="email" type="email"
+                                                <i class="size-4 absolute top-3 start-4">📧</i>
+                                                <input v-model="v$.form.email.$model" id="email" type="email"
                                                     class="form-input ps-11 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-primary dark:border-gray-800 dark:focus:border-primary focus:ring-0"
-                                                    placeholder="Email :">
+                                                    placeholder="Email :"
+                                                    :class="{ 'border-red-500': v$.form.email.$error }">
+                                            </div>
+                                            <div v-for="error of v$.form.email.$errors" :key="error.$uid">
+                                                <span class="text-xs text-red-500">{{ error.$message }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -117,11 +203,14 @@ import PageTitle from '../components/PageTitle.vue';
                                         <div class="text-start">
                                             <label for="subject" class="font-semibold">Your Question:</label>
                                             <div class="form-icon relative mt-2">
-                                                <i data-feather="book" class="size-4 absolute top-3 start-4"></i>
-                                                <input name="subject" id="subject"
+                                                <i class="size-4 absolute top-3 start-4">📚</i>
+                                                <input v-model="v$.form.subject.$model" id="subject"
                                                     class="form-input ps-11 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-primary dark:border-gray-800 dark:focus:border-primary focus:ring-0"
-                                                    placeholder="Subject :">
+                                                    placeholder="Subject :"
+                                                    :class="{ 'border-red-500': v$.form.subject.$error }">
                                             </div>
+                                            <span class="text-xs text-red-500" v-if="v$.form.subject.$error">Subject is
+                                                required.</span>
                                         </div>
                                     </div>
 
@@ -129,18 +218,22 @@ import PageTitle from '../components/PageTitle.vue';
                                         <div class="text-start">
                                             <label for="comments" class="font-semibold">Your Comment:</label>
                                             <div class="form-icon relative mt-2">
-                                                <i data-feather="message-circle"
-                                                    class="size-4 absolute top-3 start-4"></i>
-                                                <textarea name="comments" id="comments"
+                                                <i class="size-4 absolute top-3 start-4">💬</i>
+                                                <textarea v-model="v$.form.comments.$model" id="comments"
                                                     class="form-input ps-11 w-full py-2 px-3 h-28 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-primary dark:border-gray-800 dark:focus:border-primary focus:ring-0"
-                                                    placeholder="Message :"></textarea>
+                                                    placeholder="Message :"
+                                                    :class="{ 'border-red-500': v$.form.comments.$error }"></textarea>
                                             </div>
+                                            <span class="text-xs text-red-500" v-if="v$.form.comments.$error">Message is
+                                                required.</span>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" id="submit" name="send"
-                                    class="py-2 px-5 font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-primary hover:bg-primary-700 border-primary hover:border-primary-700 text-white rounded-md justify-center flex items-center">Send
-                                    Message</button>
+
+                                <button type="submit" id="submit" name="send" :disabled="isSubmitting || v$.$invalid"
+                                    class="py-2 px-5 font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-primary hover:bg-primary-700 border-primary hover:border-primary-700 text-white rounded-md justify-center flex items-center disabled:opacity-50">
+                                    {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+                                </button>
                             </form>
                         </div>
                     </div>
