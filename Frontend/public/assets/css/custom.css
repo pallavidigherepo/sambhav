@@ -6,6 +6,14 @@
     background: url('/assets/images/company/aboutus.jpg');
 }
 
+.bg-blog {
+    background: url('/assets/images/blog/bg.jpg');
+}
+
+.blog-thumb {
+    height: 325px;
+    width: 450px;
+}
 
 #topnav {
     & .navigation-menu {

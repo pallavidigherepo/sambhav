@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\ContactFormController;
+use App\Http\Controllers\Api\V1\PostController;
 use App\Services\DynamicMenuService;
 
 
@@ -16,6 +17,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 Route::get('v1/get_menu_items', function(DynamicMenuService $dynamicMenuService) {
     return $dynamicMenuService->generate_dynamic_menu();
 });
+Route::get('v1/blogs', [PostController::class, 'index']);
+Route::get('v1/blogs/{slug}', [PostController::class, 'show']);
 
 Route::post('v1/login', [AuthController::class, 'login']);
 Route::post('v1/forgot_password', [AuthController::class, 'forgot_password']);

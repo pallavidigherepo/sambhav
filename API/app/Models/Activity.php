@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Activity extends Model
 {
     protected $table = 'activities';
+    
     // You can define other properties or methods as needed
     // For example, if you have timestamps or fillable attributes, you can add them here
     protected $fillable = [
@@ -42,5 +43,15 @@ class Activity extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updator()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
     }
 }

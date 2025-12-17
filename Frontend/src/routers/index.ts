@@ -2,13 +2,14 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import AboutUs from "../views/AboutUs.vue";
 import ContactUs from "../views/ContactUs.vue";
-import Blogs from "../views/Blogs.vue";
 import Winners from "../views/Winners.vue";
 import Coaches from "../views/Coaches.vue";
 import Events from "../views/Events.vue";
+import Posts from "../views/Posts.vue";
 
 import Competition from "../views/Competition.vue";
 import Activity from "../views/Activity.vue";
+import PostDetail from '../views/PostDetail.vue';
 
 const routes = [
   {
@@ -25,11 +26,6 @@ const routes = [
     path: '/contact-us',
     name: 'ContactUs',
     component: ContactUs
-  },
-  {
-    path: '/blogs',
-    name: 'Blogs',
-    component: Blogs
   },
   {
     path: '/events',
@@ -55,6 +51,19 @@ const routes = [
     path: '/activity/:params',
     name: 'Activity',
     component: Activity
+  },
+  {
+    path: '/blogs',
+    name: 'Posts',
+    component: Posts,
+    props: true
+  },
+  {
+    // The :slug parameter matches the 'slug' field generated in Filament
+    path: '/blog/:params',
+    name: 'PostDetail',
+    component: PostDetail,
+    props: true
   }
   //   {
   //     path: '/about',
