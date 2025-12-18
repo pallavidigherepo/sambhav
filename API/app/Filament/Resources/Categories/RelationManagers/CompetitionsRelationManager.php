@@ -2,16 +2,16 @@
 
 namespace App\Filament\Resources\Categories\RelationManagers;
 
-use App\Filament\Resources\Categories\CategoryResource;
+use App\Filament\Resources\Competitions\CompetitionResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Table;
 
-class CategoriesRelationManager extends RelationManager
+class CompetitionsRelationManager extends RelationManager
 {
-    protected static string $relationship = 'parent';
+    protected static string $relationship = 'competitions';
 
-    protected static ?string $relatedResource = CategoryResource::class;
+    protected static ?string $relatedResource = CompetitionResource::class;
 
     public function table(Table $table): Table
     {

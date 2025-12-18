@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\Categories\Resources\Competitions\Schemas;
+namespace App\Filament\Resources\Competitions\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
@@ -17,6 +18,26 @@ class CompetitionForm
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('code')
+                    ->required(),
+                Select::make('category_id')
+                    ->relationship('category', 'name')
+                    ->options(function () {
+                        $categories = \App\Models\Category::with('children')->whereNull('parent_id')->get();
+                        $options = [];
+
+                        $formatTree = function ($categories, $prefix = '') use (&$options, &$formatTree) {
+                            foreach ($categories as $category) {
+                                $options[$category->id] = $prefix . $category->name;
+                                if ($category->children->count() > 0) {
+                                    $formatTree($category->children, $prefix . '— ');
+                                }
+                            }
+                        };
+
+                        $formatTree($categories);
+                        return $options;
+                    })
+                    ->searchable()
                     ->required(),
                 TextInput::make('description')
                     ->default(null),

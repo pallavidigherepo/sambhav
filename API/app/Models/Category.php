@@ -3,9 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use \Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 class Category extends Model
 {
+    use HasRecursiveRelationships;
+
     protected $fillable = [
         'name',
         'code',
@@ -51,25 +56,36 @@ class Category extends Model
         return $this->hasMany(Menu::class);
     }
 
-    public function parent()
+    public function parent() :BelongsTo
     {
         return $this->belongsTo(Category::class, 'parent_id');
     }
 
-    public function children()
+    public function children() :HasMany
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
 
-    public function activities()
+    public function activities() :HasMany
     {
         return $this->hasMany(Activity::class);
     }
 
-    public function competitions()
+    public function competitions() :HasMany
     {
         return $this->hasMany(Competition::class);
     }
 
+    public function getTreePathAttribute()
+    {
+        return $this->parent 
+            ? $this->parent->tree_path . ' > ' . $this->name 
+            : $this->name;
+    }
+
+    public function getParentKeyName()
+    {
+        return 'parent_id';
+    }
 
 }

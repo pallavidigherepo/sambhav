@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Filament\Resources\Categories\Resources\Competitions\Tables;
+namespace App\Filament\Resources\Competitions\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
 class CompetitionsTable
@@ -19,6 +20,9 @@ class CompetitionsTable
                     ->searchable(),
                 TextColumn::make('code')
                     ->searchable(),
+                TextColumn::make('category_id')
+                    ->numeric()
+                    ->sortable(),
                 TextColumn::make('description')
                     ->searchable(),
                 TextColumn::make('start_date')
@@ -82,7 +86,10 @@ class CompetitionsTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('category') // This name 'category' is the key for the URL
+                    ->relationship('category', 'name') // Connects to the 'category' relationship in the Activity model
+                    ->searchable()
+                    ->preload(),
             ])
             ->recordActions([
                 EditAction::make(),

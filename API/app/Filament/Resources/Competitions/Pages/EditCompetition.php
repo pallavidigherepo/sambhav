@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Categories\Resources\Competitions\Pages;
+namespace App\Filament\Resources\Competitions\Pages;
 
-use App\Filament\Resources\Categories\Resources\Competitions\CompetitionResource;
+use App\Filament\Resources\Competitions\CompetitionResource;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
