@@ -44,6 +44,7 @@ class ActivityResource extends Resource
         return [
             'index' => ListActivities::route('/'),
             'create' => CreateActivity::route('/create'),
+            //'back_to_categories' => CreateActivity::route('/create'),
             'edit' => EditActivity::route('/{record}/edit'),
         ];
     }

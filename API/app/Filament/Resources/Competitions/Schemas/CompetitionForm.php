@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Competitions\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -39,8 +40,9 @@ class CompetitionForm
                     })
                     ->searchable()
                     ->required(),
-                TextInput::make('description')
-                    ->default(null),
+                RichEditor::make('description')
+                    ->default(null)
+                    ->columnSpanFull(),
                 DatePicker::make('start_date'),
                 DatePicker::make('end_date'),
                 TextInput::make('location')

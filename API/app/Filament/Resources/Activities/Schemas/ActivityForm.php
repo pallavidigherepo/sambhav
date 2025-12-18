@@ -8,6 +8,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
+use App\Models\Category;
 
 class ActivityForm
 {
@@ -20,7 +21,7 @@ class ActivityForm
                 Select::make('category_id')
                     ->relationship('category', 'name')
                     ->options(function () {
-                        $categories = \App\Models\Category::with('children')->whereNull('parent_id')->get();
+                        $categories = Category::with('children')->whereNull('parent_id')->get();
                         $options = [];
 
                         $formatTree = function ($categories, $prefix = '') use (&$options, &$formatTree) {

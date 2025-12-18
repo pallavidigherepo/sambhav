@@ -18,13 +18,9 @@ class CompetitionsTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('code')
-                    ->searchable(),
                 TextColumn::make('category_id')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('description')
-                    ->searchable(),
                 TextColumn::make('start_date')
                     ->date()
                     ->sortable(),
@@ -35,55 +31,8 @@ class CompetitionsTable
                     ->searchable(),
                 TextColumn::make('organizer_name')
                     ->searchable(),
-                TextColumn::make('organizer_email')
-                    ->searchable(),
-                TextColumn::make('organizer_phone')
-                    ->searchable(),
-                TextColumn::make('organizer_website')
-                    ->searchable(),
-                TextColumn::make('contact_info')
-                    ->searchable(),
-                ImageColumn::make('image'),
-                TextColumn::make('video')
-                    ->searchable(),
-                TextColumn::make('registration_fee')
-                    ->searchable(),
-                TextColumn::make('registration_deadline')
-                    ->date()
-                    ->sortable(),
-                TextColumn::make('social_media_links')
-                    ->searchable(),
-                TextColumn::make('status')
-                    ->searchable(),
                 TextColumn::make('city_id')
-                    ->numeric()
                     ->sortable(),
-                TextColumn::make('event_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('created_by')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('updated_by')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('deleted_by')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('slug')
-                    ->searchable(),
-                TextColumn::make('deleted_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 SelectFilter::make('category') // This name 'category' is the key for the URL

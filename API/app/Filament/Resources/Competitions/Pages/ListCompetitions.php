@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\Competitions\Pages;
 
-use App\Filament\Resources\CategoryResource;
+use App\Filament\Resources\Categories\CategoryResource;
 use App\Filament\Resources\Competitions\CompetitionResource;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
