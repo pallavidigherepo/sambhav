@@ -10,6 +10,8 @@ import Posts from "../views/Posts.vue";
 import Competition from "../views/Competition.vue";
 import Activity from "../views/Activity.vue";
 import PostDetail from '../views/PostDetail.vue';
+import TermsOfServices from '../views/TermsOfServices.vue';
+import PrivacyPolicy from '../views/PrivacyPolicy.vue';
 
 const routes = [
   {
@@ -59,11 +61,20 @@ const routes = [
     props: true
   },
   {
-    // The :slug parameter matches the 'slug' field generated in Filament
     path: '/blog/:params',
     name: 'PostDetail',
     component: PostDetail,
     props: true
+  },
+  {
+    path: '/term-of-services',
+    name: 'TermsOfServices',
+    component: TermsOfServices,
+  },
+  {
+    path: '/privacy-policy',
+    name: 'PrivacyPolicy',
+    component: PrivacyPolicy,
   }
   //   {
   //     path: '/about',

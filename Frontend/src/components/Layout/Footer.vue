@@ -23,7 +23,8 @@
                                     <li class="inline"><a href="http://linkedin.com/company/shreethemes" target="_blank"
                                             class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-gray-700 text-gray-400 hover:text-white rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"><i
                                                 class="uil uil-linkedin" title="Linkedin"></i></a></li>
-                                    <li class="inline"><a href="https://www.facebook.com/shreethemes" target="_blank"
+                                    <li class="inline"><a href="https://www.facebook.com/share/17qUq2JmHA"
+                                            target="_blank"
                                             class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-gray-700 text-gray-400 hover:text-white rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"><i
                                                 class="uil uil-facebook-f align-middle" title="facebook"></i></a></li>
                                     <li class="inline"><a
@@ -46,39 +47,36 @@
                             <div class="lg:col-span-2 md:col-span-4">
                                 <h5 class="tracking-[1px] text-gray-100 font-semibold">Company</h5>
                                 <ul class="list-none footer-list mt-6">
-                                    <li><a href="page-aboutus.html"
+                                    <li><router-link to="/about-us"
                                             class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> About us</a></li>
-                                    <li class="mt-[10px]"><a href="page-services.html"
+                                                class="uil uil-angle-right-b"></i> About us</router-link></li>
+                                    <li class="mt-[10px]"><router-link to="/blogs"
                                             class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> Blogs</a></li>
-                                    <li class="mt-[10px]"><a href="page-team.html"
+                                                class="uil uil-angle-right-b"></i> Blogs</router-link></li>
+                                    <li class="mt-[10px]"><router-link to="/events"
                                             class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> Events</a></li>
-                                    <li class="mt-[10px]"><a href="page-pricing.html"
+                                                class="uil uil-angle-right-b"></i> Events</router-link></li>
+                                    <li class="mt-[10px]"><router-link to="/winners"
                                             class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> Winners</a></li>
-                                    <li class="mt-[10px]"><a href="portfolio-creative-four.html"
+                                                class="uil uil-angle-right-b"></i> Winners</router-link></li>
+                                    <li class="mt-[10px]"><router-link to="/coaches"
                                             class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> Coaches</a></li>
-                                    <li class="mt-[10px]"><a href="blog.html"
+                                                class="uil uil-angle-right-b"></i> Coaches</router-link></li>
+                                    <li class="mt-[10px]"><router-link to="/contact-us"
                                             class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> Contact</a></li>
+                                                class="uil uil-angle-right-b"></i> Contact</router-link></li>
                                 </ul>
                             </div><!--end col-->
 
                             <div class="lg:col-span-3 md:col-span-4">
                                 <h5 class="tracking-[1px] text-gray-100 font-semibold">Usefull Links</h5>
                                 <ul class="list-none footer-list mt-6">
-                                    <li><a href="page-terms.html"
+                                    <li><router-link to="/term-of-services"
                                             class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> Terms of Services</a></li>
-                                    <li class="mt-[10px]"><a href="page-privacy.html"
+                                                class="uil uil-angle-right-b"></i> Terms of Services</router-link></li>
+                                    <li class="mt-[10px]"><router-link to="privacy-policy"
                                             class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> Privacy Policy</a></li>
-                                    <li class="mt-[10px]"><a href="documentation.html"
-                                            class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i
-                                                class="uil uil-angle-right-b"></i> Documentation</a></li>
+                                                class="uil uil-angle-right-b"></i> Privacy Policy</router-link></li>
 
                                 </ul>
                             </div><!--end col-->
