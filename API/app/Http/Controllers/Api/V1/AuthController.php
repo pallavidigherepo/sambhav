@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Testing\Fluent\Concerns\Has;
-use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Validation\Rules\Password as PasswordRule;
 
 /**
  * Class AuthController
@@ -24,7 +27,7 @@ class AuthController extends Controller
             'password' => [
                 'required',
                 'confirmed',
-                Password::min(8)->mixedCase()->numbers()->symbols()
+                PasswordRule::min(8)->mixedCase()->numbers()->symbols()
             ]
         ]);
 
@@ -34,7 +37,7 @@ class AuthController extends Controller
             'password' => Hash::make($data['password'])
         ]);
 
-        $token = Auth::fromUser($user);
+        $token = $user->createToken('main')->plainTextToken;
 
         return response([
             'user' => $user,

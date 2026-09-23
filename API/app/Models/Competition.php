@@ -11,6 +11,10 @@ class Competition extends Model
         'code',
         'category_id',
         'description',
+        'scope',
+        'grade_min',
+        'grade_max',
+        'apply_url',
         'start_date',
         'end_date',
         'location',
@@ -52,5 +56,10 @@ class Competition extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function bookmarks(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Bookmark::class, 'bookmarkable');
     }
 }

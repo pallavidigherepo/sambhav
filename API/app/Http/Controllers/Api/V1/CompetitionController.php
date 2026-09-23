@@ -1,66 +1,47 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Competition;
-use App\Http\Requests\StoreCompetitionRequest;
-use App\Http\Requests\UpdateCompetitionRequest;
+use App\Services\EventFilterService;
+use App\Http\Resources\CompetitionResource;
 
 class CompetitionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    protected $filterService;
+
+    public function __construct(EventFilterService $filterService)
     {
-        //
+        $this->filterService = $filterService;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function index(Request $request)
     {
-        //
+        $query = Competition::query()->where('is_active', true);
+        
+        $query = $this->filterService->applyFilters($query, $request->all());
+        
+        // Ensure newest competitions show up first
+        $query->orderBy('created_at', 'desc');
+
+        $competitions = $query->paginate(12);
+
+        return CompetitionResource::collection($competitions);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreCompetitionRequest $request)
+    public function show($identifier)
     {
-        //
-    }
+        $competition = Competition::where('is_active', true)
+            ->where(function ($q) use ($identifier) {
+                $q->where('slug', $identifier);
+                if (is_numeric($identifier)) {
+                    $q->orWhere('id', $identifier);
+                }
+            })
+            ->firstOrFail();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Competition $competition)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Competition $competition)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateCompetitionRequest $request, Competition $competition)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Competition $competition)
-    {
-        //
+        return new CompetitionResource($competition);
     }
 }

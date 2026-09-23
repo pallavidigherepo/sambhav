@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import PageTitle from '../components/PageTitle.vue';
-import axiosClient from "@/axios.js";
+import axiosClient from "@/axios";
 import LoadingCard from '../components/LoadingCard.vue';
 import type { PaginationMeta } from '@/types/pagination';
 import Pagination from '../components/Pagination.vue';

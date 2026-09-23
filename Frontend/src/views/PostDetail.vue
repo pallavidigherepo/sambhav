@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
 import PageTitle from '../components/PageTitle.vue';
-import axiosClient from "@/axios.js";
+import axiosClient from "@/axios";
 import { useRoute } from "vue-router";
 
 onMounted(() => {

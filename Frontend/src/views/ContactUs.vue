@@ -123,8 +123,8 @@ async function submitForm() {
                             feedback, or assistance you may need. Our team will get back to you as soon as possible.</p>
 
                         <div class="mt-5">
-                            <a href="mailto:support@apaarsambhavana.com"
-                                class="relative inline-block font-semibold tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:duration-500 text-primary hover:text-primary after:bg-primary duration-500 ease-in-out">support@apaarsambhavana.com</a>
+                            <a href="mailto:support@apaarsambhavana.in"
+                                class="relative inline-block font-semibold tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:duration-500 text-primary hover:text-primary after:bg-primary duration-500 ease-in-out">support@apaarsambhavana.in</a>
                         </div>
                     </div>
                 </div>

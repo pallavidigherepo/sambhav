@@ -15,7 +15,7 @@ const props = defineProps<{
 <template>
     <div>
         <!-- Start Hero -->
-        <section class="relative table w-full py-36 bg-about-us bg-no-repeat bg-center bg-cover">
+        <section class="relative table w-full py-16 bg-about-us bg-no-repeat bg-center bg-cover">
             <div class="absolute inset-0 bg-slate-900 opacity-75"></div>
             <div class="container relative">
                 <div class="grid grid-cols-1 pb-8 text-center mt-10">

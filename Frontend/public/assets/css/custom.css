@@ -1,5 +1,12 @@
 .bg-home {
-    background: url('/assets/images/apaar_home_bg.png')
+    background: url('/assets/images/apaar_home_bg_mixed.jpg') center center;
+    background-size: cover;
+    animation: bg-pan 30s ease-in-out infinite alternate;
+}
+
+@keyframes bg-pan {
+    0% { background-position: 0% 50%; background-size: 100%; }
+    100% { background-position: 100% 50%; background-size: 110%; }
 }
 
 .bg-about-us {

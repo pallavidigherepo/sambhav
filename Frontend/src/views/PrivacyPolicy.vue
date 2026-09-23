@@ -44,8 +44,8 @@ import PageTitle from '../components/PageTitle.vue';
         <h2>6. Contact Information</h2>
         <p>For any legal or privacy concerns, please contact us at:</p>
         <p>
-            <strong>Email:</strong> support@apaarsambhavana.com<br>
-            <strong>Address:</strong> Nirmal, Bharat Nagar, Nagpur, Maharashtra INDIA
+            <strong>Email:</strong> [EMAIL_ADDRESS]<br>
+            <strong>Address:</strong> Nirmal, Bharat Nagar, Nagpur, Maharashtra 440037 INDIA
         </p>
     </section>
 </template>

@@ -8,11 +8,18 @@ import Events from "../views/Events.vue";
 import Posts from "../views/Posts.vue";
 
 import Competition from "../views/Competition.vue";
+import CompetitionDetail from "../views/CompetitionDetail.vue";
 import Activity from "../views/Activity.vue";
 import PostDetail from '../views/PostDetail.vue';
 import TermsOfServices from '../views/TermsOfServices.vue';
 import PrivacyPolicy from '../views/PrivacyPolicy.vue';
-
+import Leaderboard from '../views/Leaderboard.vue';
+import Profile from '../views/Dashboard/Profile.vue';
+import Login from '../views/Auth/Login.vue';
+import Register from '../views/Auth/Register.vue';
+import ForgotPassword from '../views/Auth/ForgotPassword.vue';
+import ResetPassword from '../views/Auth/ResetPassword.vue';
+import SocialCallback from '../views/Auth/SocialCallback.vue';
 const routes = [
   {
     path: '/',
@@ -45,7 +52,17 @@ const routes = [
     component: Coaches
   },
   {
-    path: '/competition/:params',
+    path: '/competitions',
+    name: 'CompetitionsList',
+    component: Competition
+  },
+  {
+    path: '/competitions/:id',
+    name: 'CompetitionDetail',
+    component: CompetitionDetail
+  },
+  {
+    path: '/competition/:params?',
     name: 'Competition',
     component: Competition
   },
@@ -75,6 +92,41 @@ const routes = [
     path: '/privacy-policy',
     name: 'PrivacyPolicy',
     component: PrivacyPolicy,
+  },
+  {
+    path: '/leaderboard',
+    name: 'Leaderboard',
+    component: Leaderboard,
+  },
+  {
+    path: '/dashboard/profile',
+    name: 'Profile',
+    component: Profile,
+  },
+  {
+    path: '/auth/login',
+    name: 'Login',
+    component: Login,
+  },
+  {
+    path: '/auth/register',
+    name: 'Register',
+    component: Register,
+  },
+  {
+    path: '/auth/forgot-password',
+    name: 'ForgotPassword',
+    component: ForgotPassword,
+  },
+  {
+    path: '/auth/reset-password',
+    name: 'ResetPassword',
+    component: ResetPassword,
+  },
+  {
+    path: '/auth/social-callback',
+    name: 'SocialCallback',
+    component: SocialCallback,
   }
   //   {
   //     path: '/about',
