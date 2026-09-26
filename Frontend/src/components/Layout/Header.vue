@@ -164,7 +164,7 @@ function toggleSubmenuMenu() {
 </template>
 
 <style>
-/* Ambient sunburst aura glow behind the logo mark */
+/* Option 1: Ambient sunburst aura glow behind the logo mark */
 .logo-aura {
     background: radial-gradient(circle, rgba(251, 146, 60, 0.45) 0%, rgba(245, 158, 11, 0.22) 50%, transparent 75%);
     filter: blur(8px);
@@ -223,6 +223,8 @@ function toggleSubmenuMenu() {
 
 #topnav.nav-sticky .logo-img-mark {
     filter: none;
+    height: 48px;
+    max-height: 48px;
 }
 
 /* When navbar is sticky in dark mode (dark background) */

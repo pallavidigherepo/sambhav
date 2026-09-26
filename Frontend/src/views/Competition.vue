@@ -189,36 +189,37 @@ onMounted(() => {
 
 <template>
     <div>
-        <!-- Hero Section with Guaranteed High-Contrast Dark Mesh Backdrop -->
-        <section class="relative py-16 md:py-24 text-white overflow-hidden" style="background: linear-gradient(135deg, #090d16 0%, #171938 50%, #090d16 100%)">
-            <!-- Background Glow Orbs -->
-            <div class="absolute -top-24 left-1/4 size-96 rounded-full bg-indigo-600/30 blur-3xl pointer-events-none"></div>
-            <div class="absolute -bottom-24 right-10 size-96 rounded-full bg-purple-600/20 blur-3xl pointer-events-none"></div>
+        <!-- Hero Section with Palette 3: Royal Dawn Horizon (Indigo, Wine, Copper & Golden Sunrise) -->
+        <section class="relative py-16 md:py-24 text-white overflow-hidden" style="background: linear-gradient(135deg, #1e1b4b 0%, #4a044e 30%, #7c2d12 65%, #c2410c 100%)">
+            <!-- Warm Royal Sunrise Glow Orbs -->
+            <div class="absolute -top-20 left-1/4 size-96 rounded-full bg-amber-400/25 blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-20 right-10 size-96 rounded-full bg-orange-500/30 blur-3xl pointer-events-none"></div>
+            <div class="absolute top-1/3 left-10 size-72 rounded-full bg-fuchsia-500/20 blur-3xl pointer-events-none"></div>
             
             <div class="container relative z-10 text-center max-w-4xl mx-auto px-4">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-wider text-amber-300 mb-6 shadow-xl">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/30 text-xs font-black uppercase tracking-wider text-amber-100 mb-6 shadow-lg">
                     <span>✨ Level Up Your Academic Journey</span>
                 </div>
                 
-                <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4 leading-tight">
-                    Find National & International <span style="background: linear-gradient(90deg, #fbbf24 0%, #38bdf8 50%, #c026d3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Competitions</span>
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-4 leading-tight drop-shadow-sm">
+                    Find National & International <span style="background: linear-gradient(90deg, #fef08a 0%, #fed7aa 50%, #f472b6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Competitions</span>
                 </h1>
                 
-                <p class="text-slate-300 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed font-normal">
+                <p class="text-amber-100/90 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed font-medium">
                     Discover handpicked Olympiads, Hackathons, Debates, and Science Contests designed for Grade 1-12 students. Win cash rewards and certificates!
                 </p>
 
-                <!-- Interactive Hero Search Bar -->
+                <!-- Interactive Hero Search Bar with Frosted Glass -->
                 <div class="max-w-2xl mx-auto relative shadow-2xl">
-                    <div class="flex items-center bg-slate-900/90 rounded-2xl p-2 border-2 border-slate-700/80 focus-within:border-primary-400 transition-all shadow-inner">
-                        <i class="uil uil-search text-2xl text-amber-400 ms-3 me-2"></i>
+                    <div class="flex items-center bg-black/25 backdrop-blur-md rounded-2xl p-2 border-2 border-white/30 focus-within:border-amber-300 focus-within:bg-black/35 transition-all shadow-inner">
+                        <i class="uil uil-search text-2xl text-amber-300 ms-3 me-2"></i>
                         <input 
                             v-model="searchQuery" 
                             type="text" 
                             placeholder="Search by topic, e.g. Maths, Science, AI, Debate..." 
-                            class="w-full bg-transparent text-white placeholder-slate-400 text-sm md:text-base outline-none py-2 font-medium"
+                            class="w-full bg-transparent text-white placeholder-amber-200/70 text-sm md:text-base outline-none py-2 font-semibold"
                         />
-                        <button v-if="searchQuery" @click="searchQuery = ''" class="p-2 text-slate-400 hover:text-white text-xl">
+                        <button v-if="searchQuery" @click="searchQuery = ''" class="p-2 text-amber-200 hover:text-white text-xl">
                             <i class="uil uil-times"></i>
                         </button>
                     </div>
