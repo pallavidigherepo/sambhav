@@ -72,11 +72,18 @@ function toggleSubmenuMenu() {
     <nav id="topnav" class="defaultscroll is-sticky">
         <div class="w-full px-4 xl:px-8 relative block" style="max-width: 100%;">
             <!-- Logo container-->
-            <a class="logo flex items-center gap-3" href="/" style="line-height: normal;">
-                <img src="/assets/images/logo_sunrise-transparent.png" style="height: 48px; max-height: 48px; width: auto;" class="object-contain" alt="Sambhav">
+            <a class="logo flex items-center gap-3.5 group/logo" href="/" style="line-height: normal;">
+                <div class="logo-mark-wrapper relative flex items-center justify-center">
+                    <!-- Ambient Solar Aura Glow -->
+                    <div class="logo-aura absolute inset-0 -m-1.5 rounded-full pointer-events-none"></div>
+                    <img src="/assets/images/logo_sunrise-transparent.png" class="logo-img-mark relative object-contain" alt="Apaar Sambhavna">
+                </div>
                 <div class="flex-col justify-center hidden lg:flex text-left" style="line-height: normal;">
-                    <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white" style="line-height: 1;">Apaar Sambhavna</span>
-                    <span class="text-[10px] font-bold text-orange-500 tracking-widest uppercase mt-1" style="line-height: 1;">The Competition Booster</span>
+                    <span class="logo-title text-xl font-black tracking-tight transition-colors" style="line-height: 1.1;">Apaar Sambhavna</span>
+                    <span class="logo-subtitle text-[10px] font-black tracking-[0.2em] uppercase mt-1 flex items-center gap-1.5" style="line-height: 1;">
+                        <span class="size-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+                        <span>The Competition Booster</span>
+                    </span>
                 </div>
             </a>
 
@@ -141,58 +148,9 @@ function toggleSubmenuMenu() {
                 <ul class="navigation-menu nav-light">
                     <!-- <li><a href="/" class="sub-menu-item">Home</a></li> -->
                     <li><router-link to="/about-us" class="sub-menu-item">About Us</router-link></li>
-                    <li class="has-submenu parent-parent-menu-item">
-                        <a href="javascript:void(0)" @click.prevent="toggleSubmenuMenu()">Competitions</a><span
-                            class="menu-arrow"></span>
-                        <ul class="submenu megamenu">
-                            <template v-for="item in competitionMenu" :key="item.id">
-                                <li>
-                                    <ul>
-                                        <li class="megamenu-head"
-                                            style="text-size-adjust: inherit; text-wrap-mode: wrap;">{{ item.name }}
-                                        </li>
-                                        <template v-if="item.children">
-                                            <template v-for="submenu in item.children" :key="submenu.id">
-                                                <li>
-                                                    <router-link :to="submenu.route" class="sub-menu-item">{{
-                                                        submenu.name }}</router-link>
-                                                </li>
-                                            </template>
-                                        </template>
-
-                                    </ul>
-                                </li>
-                            </template>
-
-                        </ul>
-                    </li>
-                    <li class="has-submenu parent-parent-menu-item">
-                        <a href="javascript:void(0)" @click.prevent="toggleSubmenuMenu()">Activities</a><span
-                            class="menu-arrow"></span>
-                        <ul class="submenu megamenu">
-                            <template v-for="activityItem in activityMenu" :key="activityItem.id">
-                                <li>
-                                    <ul>
-                                        <li class="megamenu-head">{{ activityItem.name }}</li>
-                                        <template v-if="activityItem.children">
-                                            <template v-for="activitySubmenu in activityItem.children"
-                                                :key="activitySubmenu.id">
-                                                <li>
-                                                    <router-link :to="activitySubmenu.route" class="sub-menu-item">{{
-                                                        activitySubmenu.name }}</router-link>
-                                                </li>
-                                            </template>
-                                        </template>
-
-                                    </ul>
-                                </li>
-                            </template>
-
-                        </ul>
-                    </li>
-
+                    <li><router-link to="/competitions" class="sub-menu-item">Competitions</router-link></li>
+                    <li><router-link to="/events" class="sub-menu-item">Activities</router-link></li>
                     <li><router-link to="/blogs" class="sub-menu-item">Blogs</router-link></li>
-                    <li><router-link to="/events" class="sub-menu-item">Events</router-link></li>
                     <li><router-link to="/leaderboard"
                             class="sub-menu-item text-primary font-bold">Leaderboard</router-link></li>
                     <!-- <li><router-link to="/winners" class="sub-menu-item">Winners</router-link></li> -->
@@ -204,3 +162,83 @@ function toggleSubmenuMenu() {
     </nav><!--end header-->
     <!-- End Navbar -->
 </template>
+
+<style>
+/* Ambient sunburst aura glow behind the logo mark */
+.logo-aura {
+    background: radial-gradient(circle, rgba(251, 146, 60, 0.45) 0%, rgba(245, 158, 11, 0.22) 50%, transparent 75%);
+    filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+/* Luminous rim-light and warm glow to carve out the dark navy arch and book */
+.logo-img-mark {
+    height: 50px;
+    max-height: 50px;
+    width: auto;
+    filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, 0.95))
+            drop-shadow(0 0 10px rgba(245, 158, 11, 0.55))
+            drop-shadow(0 2px 14px rgba(234, 88, 12, 0.3));
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.logo:hover .logo-img-mark {
+    transform: scale(1.06);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 1))
+            drop-shadow(0 0 14px rgba(245, 158, 11, 0.8))
+            drop-shadow(0 4px 18px rgba(234, 88, 12, 0.45));
+}
+
+.logo:hover .logo-aura {
+    transform: scale(1.25);
+    opacity: 1;
+}
+
+.logo-title {
+    color: #ffffff;
+    transition: color 0.3s ease;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo-subtitle {
+    color: #fb923c;
+    transition: color 0.3s ease;
+    text-shadow: 0 0 10px rgba(249, 115, 22, 0.3);
+}
+
+/* When navbar is scrolled down and becomes sticky (white background in light mode) */
+#topnav.nav-sticky .logo-title {
+    color: #0f172a !important;
+    text-shadow: none;
+}
+
+#topnav.nav-sticky .logo-subtitle {
+    color: #ea580c !important;
+    text-shadow: none;
+}
+
+#topnav.nav-sticky .logo-aura {
+    opacity: 0;
+}
+
+#topnav.nav-sticky .logo-img-mark {
+    filter: none;
+}
+
+/* When navbar is sticky in dark mode (dark background) */
+html.dark #topnav.nav-sticky .logo-title,
+.dark #topnav.nav-sticky .logo-title {
+    color: #ffffff !important;
+}
+
+html.dark #topnav.nav-sticky .logo-subtitle,
+.dark #topnav.nav-sticky .logo-subtitle {
+    color: #fb923c !important;
+}
+
+html.dark #topnav.nav-sticky .logo-img-mark,
+.dark #topnav.nav-sticky .logo-img-mark {
+    filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, 0.95))
+            drop-shadow(0 0 10px rgba(245, 158, 11, 0.55));
+}
+</style>

@@ -19,12 +19,21 @@ class CompetitionController extends Controller
 
     public function index(Request $request)
     {
-        $query = Competition::query()->where('is_active', true);
+        $query = Competition::with(['category', 'city'])->where('status', 'active');
         
         $query = $this->filterService->applyFilters($query, $request->all());
         
-        // Ensure newest competitions show up first
-        $query->orderBy('created_at', 'desc');
+        if ($request->filled('sortBy')) {
+            if ($request->sortBy === 'deadline') {
+                $query->orderBy('registration_deadline', 'asc');
+            } elseif ($request->sortBy === 'fee_low') {
+                $query->orderBy('registration_fee', 'asc');
+            } else {
+                $query->orderBy('created_at', 'desc');
+            }
+        } else {
+            $query->orderBy('created_at', 'desc');
+        }
 
         $competitions = $query->paginate(12);
 
@@ -33,7 +42,8 @@ class CompetitionController extends Controller
 
     public function show($identifier)
     {
-        $competition = Competition::where('is_active', true)
+        $competition = Competition::with(['category', 'city', 'event'])
+            ->where('status', 'active')
             ->where(function ($q) use ($identifier) {
                 $q->where('slug', $identifier);
                 if (is_numeric($identifier)) {

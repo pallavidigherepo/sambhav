@@ -44,9 +44,54 @@ class EventFilterService
         }
 
         if (!empty($filters['category_id'])) {
-            $query->where('category_id', $filters['category_id']);
+            $catId = (int) $filters['category_id'];
+            $allIds = $this->getAllDescendantCategoryIds($catId);
+            $query->whereIn('category_id', $allIds);
+        } elseif (!empty($filters['category'])) {
+            $cat = $filters['category'];
+            $categoryModel = \App\Models\Category::where('id', $cat)->orWhere('slug', $cat)->first();
+            if ($categoryModel) {
+                $allIds = $this->getAllDescendantCategoryIds($categoryModel->id);
+                $query->whereIn('category_id', $allIds);
+            }
+        }
+
+        if (!empty($filters['fee'])) {
+            if ($filters['fee'] === 'free') {
+                $query->where(function ($q) {
+                    $q->whereNull('registration_fee')
+                      ->orWhere('registration_fee', 0);
+                });
+            } elseif ($filters['fee'] === 'paid') {
+                $query->where('registration_fee', '>', 0);
+            }
+        }
+
+        if (!empty($filters['search'])) {
+            $search = trim($filters['search']);
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%");
+            });
         }
 
         return $query;
+    }
+
+    /**
+     * Get array containing category ID and all descendant category IDs recursively.
+     *
+     * @param int $categoryId
+     * @return array
+     */
+    private function getAllDescendantCategoryIds(int $categoryId): array
+    {
+        $ids = [$categoryId];
+        $children = \App\Models\Category::whereIn('parent_id', $ids)->pluck('id')->toArray();
+        while (!empty($children)) {
+            $ids = array_merge($ids, $children);
+            $children = \App\Models\Category::whereIn('parent_id', $children)->pluck('id')->toArray();
+        }
+        return array_unique($ids);
     }
 }

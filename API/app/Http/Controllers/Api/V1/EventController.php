@@ -19,7 +19,7 @@ class EventController extends Controller
 
     public function index(Request $request)
     {
-        $query = Event::query()->where('is_active', true);
+        $query = Event::with(['category', 'city'])->where('status', 'active');
         
         $query = $this->filterService->applyFilters($query, $request->all());
         
