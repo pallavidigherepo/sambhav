@@ -27,7 +27,19 @@ class SocialAuthController extends Controller
      */
     public function handleGoogleCallback()
     {
-        $frontendUrl = config('app.frontend_url', env('FRONTEND_URL', 'http://localhost:5173'));
+        $rawFrontendUrl = config('app.frontend_url', env('FRONTEND_URL', 'https://apaarsambhavana.in'));
+        $frontendUrls = array_values(array_filter(array_map('trim', explode(',', $rawFrontendUrl))));
+        $frontendUrl = !empty($frontendUrls) ? $frontendUrls[0] : 'https://apaarsambhavana.in';
+
+        // In production, ensure we use https production frontend url if available in the list
+        if (app()->isProduction()) {
+            foreach ($frontendUrls as $url) {
+                if (str_starts_with($url, 'https://')) {
+                    $frontendUrl = $url;
+                    break;
+                }
+            }
+        }
 
         try {
             $googleUser = Socialite::driver('google')->stateless()->user();
