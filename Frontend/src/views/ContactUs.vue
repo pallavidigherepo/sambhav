@@ -89,7 +89,7 @@ async function submitForm() {
     <!-- End Hero -->
 
     <!-- Start Section-->
-    <section class="relative md:py-24 py-16">
+    <section class="relative md:py-10 py-16">
         <div class="container relative">
             <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-[30px]">
                 <div class="text-center px-6 mt-6">

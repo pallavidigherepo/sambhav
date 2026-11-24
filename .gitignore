@@ -2,3 +2,4 @@ node_modules
 Admin/.editorconfig
 Admin/.env.example
 Admin/.gitattributes
+*.zip
