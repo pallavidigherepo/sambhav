@@ -49,8 +49,8 @@ class SocialAuthController extends Controller
 
         // Find existing user by google_id or email
         $user = User::where('google_id', $googleUser->getId())
-                    ->orWhere('email', $googleUser->getEmail())
-                    ->first();
+            ->orWhere('email', $googleUser->getEmail())
+            ->first();
 
         if ($user) {
             // Update google_id if they previously registered with email/password
@@ -60,12 +60,12 @@ class SocialAuthController extends Controller
         } else {
             // Create new user
             $user = User::create([
-                'name'              => $googleUser->getName(),
-                'email'             => $googleUser->getEmail(),
-                'google_id'         => $googleUser->getId(),
-                'avatar'            => $googleUser->getAvatar(),
+                'name' => $googleUser->getName(),
+                'email' => $googleUser->getEmail(),
+                'google_id' => $googleUser->getId(),
+                'avatar' => $googleUser->getAvatar(),
                 'email_verified_at' => now(), // Google accounts are pre-verified
-                'password'          => bcrypt(Str::random(32)), // Random unusable password
+                'password' => bcrypt(Str::random(32)), // Random unusable password
             ]);
 
             // Auto-create student profile for new social users
